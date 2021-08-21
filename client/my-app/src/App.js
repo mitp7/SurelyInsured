@@ -6,8 +6,8 @@ import Navbar from './Navbar/Navbar.js';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <div>
+      <header>
         <Navbar/>
         <MapContainer/>
       </header>
