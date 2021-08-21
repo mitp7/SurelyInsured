@@ -8,7 +8,7 @@ import * as api from '../api';
 
 export default () => { 
 
-    const [center, setCenter] = useState({lat: 20, lng: 1});
+    const [center, setCenter] = useState({lat: 43.653226, lng: -79.3831843}); // default latitude and longitude values
 
     // On SearchBar submit, update the center state's lattitude and longtitude
     const onSubmit = async (location) => {
@@ -25,7 +25,6 @@ export default () => {
 
     return (
         <div>
-            <h1>{center.lat}{" "}{center.lng}</h1>
             <SearchBar onSubmit={onSubmit}/>
             <MapContainer key={center} center={center}/>
         </div>

@@ -1,12 +1,15 @@
 import React from 'react';
 import {Navbar, Container, Nav, NavDropdown} from 'react-bootstrap';
 
+import logo from '../images/logo.PNG'
+import './index.css'
+
 export default () => { 
     return (
       <Navbar bg="light" expand="lg">
         <Container>
-          <Navbar.Brand href="#home">Logo</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Brand href="#home"><img className="logo" src={logo}/></Navbar.Brand>
+          {/* <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link href="#home">Home</Nav.Link>
@@ -19,7 +22,7 @@ export default () => {
                 <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
               </NavDropdown>
             </Nav>
-          </Navbar.Collapse>
+          </Navbar.Collapse> */}
         </Container>
       </Navbar>
     )
