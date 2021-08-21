@@ -4,11 +4,6 @@ dotenv.config();
 
 Geocode.setApiKey(process.env.REACT_APP_GOOGLE_API_KEY); // set API key
 
-// export const getLatLngFromAddress = (address) => { 
-//     // Get latitude & longitude from address.
-//     return Geocode.fromAddress(address)
-// }
-
 export const getLatLngFromAddress = (address) => { 
     // Get latitude & longitude from address.
     return Geocode.fromAddress(address).then(
