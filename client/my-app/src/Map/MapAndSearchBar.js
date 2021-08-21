@@ -5,18 +5,18 @@ import SearchBar from './SearchBar/SearchBar';
 
 export default () => { 
 
+    const [center, setCenter] = useState({lat: 20, lng: 1});
+
     // On SearchBar submit, update the center state's lattitude and longtitude
     const onSubmit = (event) => {
-         
-        console.log();
+        setCenter({lat: 1, lng: 7})
     }
-
-    const [center, setCenter] = useState({lat: 10.99835602, lng: 77.01502627});
 
     return (
         <div>
             <SearchBar/>
-            <MapContainer center={center}/>
+            <MapContainer key={center} center={center}/>
+            <button onClick={onSubmit}>Test click</button>
         </div>
     )
 }

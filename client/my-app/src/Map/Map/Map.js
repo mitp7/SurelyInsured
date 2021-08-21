@@ -4,28 +4,21 @@ import Geocode from 'react-geocode';
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
-export default function SimpleMap(props){
-  const defaultProps = {
-    center: {
-      lat: 10.99835602,
-      lng: 77.01502627
-    },
-    zoom: 11
-  };
+export default function SimpleMap(props) {  
 
   return (
     // Important! Always set the container height explicitly
     <div style={{ height: '500px', width: '100%' }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: "" }}
-        defaultCenter={props.center}
-        defaultZoom={11}
-      >
+        center={props.center}
+        defaultZoom={props.zoom ? props.zoom : 11}
+        >
         <AnyReactComponent
           lat={59.955413}
-          lng={30.337844}
+          lng={30.337844} 
           text="My Marker"
-        />
+          />
       </GoogleMapReact>
     </div>
   );
