@@ -10,10 +10,6 @@ function App() {
         <Navbar/>
         <Home/>
 
-        <iframe src="https://compare.insurancehotline.com/en/auto/vehicles">
-
-        </iframe>
-
     </div>
   );
 }
