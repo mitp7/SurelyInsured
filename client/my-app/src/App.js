@@ -11,6 +11,9 @@ function App() {
         <Navbar/>
         <Home/>
         <DataDisplay/>
+        <iframe src="https://compare.insurancehotline.com/en/auto/vehicles">
+
+        </iframe>
     </div>
   );
 }
