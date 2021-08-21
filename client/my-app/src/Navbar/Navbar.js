@@ -6,7 +6,7 @@ import './index.css'
 
 export default () => { 
     return (
-      <Navbar bg="light" expand="lg">
+      <Navbar className="navbar" expand="lg">
         <Container>
           <Navbar.Brand href="#home"><img className="logo" src={logo}/></Navbar.Brand>
           {/* <Navbar.Toggle aria-controls="basic-navbar-nav" />
