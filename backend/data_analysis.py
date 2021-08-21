@@ -1,7 +1,7 @@
 import pandas as pd
 import math
 
-table = pd.read_csv('../HazardousDrivingAreas.csv')
+table = pd.read_csv('HazardousDrivingAreas.csv')
 
 # Return the (num_entries) closest entries to the location (lat, lng)
 def nearby_entries(lat, lng, num_entries=100):
