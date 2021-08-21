@@ -2,9 +2,10 @@
 @import url("https://css.gg/trending.css");
 
 .dataDisplay {
-  width: 70%;
+  width: 100%;
   display: flex;
-  margin: 2.4%;
+  margin-top: 3.2rem;
+  margin-left: 4rem;
   flex-direction: column;
   justify-content: space-between;
   font-family: "Raleway", sans-serif;
