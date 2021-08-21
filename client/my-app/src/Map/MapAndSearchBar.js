@@ -11,11 +11,13 @@ export default () => {
     const [center, setCenter] = useState({lat: 20, lng: 1});
 
     // On SearchBar submit, update the center state's lattitude and longtitude
-    const onSubmit = async (event) => {
-        event.preventDefault();
+    const onSubmit = async (location) => {
         try {
-            center = await api.getLatLngFromAddress(event.value); 
-            setCenter(center);
+            const centerApi = await api.getLatLngFromAddress(location); 
+            const lat = centerApi.lat;
+            const lng = centerApi.lng;
+            console.log(`from component: lat: ${lat} lng: ${lng}`);
+            setCenter({lat, lng});
         } catch (error) { 
             console.log(error);
         }
@@ -23,6 +25,7 @@ export default () => {
 
     return (
         <div>
+            <h1>{center.lat}{" "}{center.lng}</h1>
             <SearchBar onSubmit={onSubmit}/>
             <MapContainer key={center} center={center}/>
         </div>
