@@ -3,7 +3,6 @@ import {Container, Col, Row} from 'react-bootstrap';
 
 import MapAndSearchBar from '../Map/MapAndSearchBar.js';
 import DataDisplay from '../DataDisplay/DataDisplay.js';
-
 import './index.css';
 
 export default () => { 

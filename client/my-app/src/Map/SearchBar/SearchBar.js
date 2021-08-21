@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './index.css';
 
-function SearchBar() {
+function SearchBar(props) {
    const [value, setValue] = useState("");
    return (
       <section className="Search">
@@ -9,11 +9,12 @@ function SearchBar() {
             <div className="Search__title__container">
                <h1 className="Search__title">TITLE</h1>
             </div>
-            <form>
+            <form onSubmit={(event) => {event.preventDefault(); props.onSubmit(value)}}>
                <div className="Search__bar">
                   <input
                      size="large"
                      className="Search__input"
+                     name="location"
                      placeholder="Enter Your Location"
                      value={value}
                      onChange={(event) => {
