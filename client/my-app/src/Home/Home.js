@@ -1,7 +1,8 @@
 import React from 'react';
 import {Container, Col, Row} from 'react-bootstrap';
 
-import MapContainer from '../Map/Map/MapContainer.js';
+import MapAndSearchBar from '../Map/MapAndSearchBar.js';
+
 import './index.css';
 
 export default () => { 
@@ -9,7 +10,7 @@ export default () => {
     <Container className="home-container">
         <Row>
             <Col xs={12} md = {6} className="map-box">
-                <MapContainer/>
+                <MapAndSearchBar/>
             </Col>
             <Col xs={12} md = {6} className="data-box">
                 Data Display

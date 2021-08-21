@@ -1,5 +1,6 @@
 import React from "react";
 import GoogleMapReact from 'google-map-react';
+import Geocode from 'react-geocode';
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
@@ -11,7 +12,7 @@ export default function SimpleMap(){
     },
     zoom: 11
   };
-
+  
   return (
     // Important! Always set the container height explicitly
     <div style={{ height: '500px', width: '100%' }}>
