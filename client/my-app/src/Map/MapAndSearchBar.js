@@ -9,14 +9,14 @@ export default () => {
 
     // On SearchBar submit, update the center state's lattitude and longtitude
     const onSubmit = (event) => {
+        event.preventDefault();
         setCenter({lat: 1, lng: 7})
     }
 
     return (
         <div>
-            <SearchBar/>
+            <SearchBar onSubmit={onSubmit}/>
             <MapContainer key={center} center={center}/>
-            <button onClick={onSubmit}>Test click</button>
         </div>
     )
 }
