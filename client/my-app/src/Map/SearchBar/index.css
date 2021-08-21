@@ -1,3 +1,33 @@
-.form { 
-    margin-bottom: 10px
+.Search {
+  margin-top: 1%;
+  margin-bottom: 5%;
+}
+
+.Search__container{
+   text-align: center;
+}
+
+.Search__title {
+  font-family: "Trebuchet MS";
+  font-weight: 900;
+  width: auto;
+  letter-spacing: -1px;
+  color: black;
+  word-spacing: -4px;
+  font-size: 64px;
+}
+
+.Search__input {
+  border: none;
+  box-shadow: 0px 8px 30px rgba(57, 57, 57, 0.25);
+  border-radius: 4px;
+  font-family: "Trebuchet MS";
+}
+
+.Search__submit {
+  border: none;
+  border-radius: 4px;
+  font-family: "Trebuchet MS";
+  font-weight: 900;
+  background: #00BFFF;
 }
