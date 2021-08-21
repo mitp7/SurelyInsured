@@ -3,6 +3,10 @@
   margin-bottom: 5%;
 }
 
+.Search__container{
+   text-align: center;
+}
+
 .Search__title {
   font-family: "Trebuchet MS";
   font-weight: 900;
