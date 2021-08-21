@@ -24,7 +24,7 @@ export default function DataDisplay() {
         <div className="dataInformation">
           <span className="dataStatistics">30%</span>
           <img src="/images/green_icon.png" alt=""></img>
-          <span className="dataCatergory">Lower rates of accidents</span>
+          <span className="dataCatergory">Lower rate of accidents</span>
         </div>
       </div>
 

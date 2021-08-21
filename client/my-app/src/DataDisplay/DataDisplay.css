@@ -4,7 +4,7 @@
 .dataDisplay {
   width: 70%;
   display: flex;
-  margin: 2.5%;
+  margin: 2.4%;
   flex-direction: column;
   justify-content: space-between;
   font-family: "Raleway", sans-serif;

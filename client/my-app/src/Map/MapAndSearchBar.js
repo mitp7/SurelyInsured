@@ -3,20 +3,28 @@ import React, {useState} from 'react';
 import MapContainer from './Map/MapContainer';
 import SearchBar from './SearchBar/SearchBar';
 
+import * as api from '../api';
+
+
 export default () => { 
 
-    // On SearchBar submit, update the center state's lattitude and longtitude
-    const onSubmit = (event) => {
-         
-        console.log();
-    }
+    const [center, setCenter] = useState({lat: 20, lng: 1});
 
-    const [center, setCenter] = useState({lat: 10.99835602, lng: 77.01502627});
+    // On SearchBar submit, update the center state's lattitude and longtitude
+    const onSubmit = async (event) => {
+        event.preventDefault();
+        try {
+            center = await api.getLatLngFromAddress(event.value); 
+            setCenter(center);
+        } catch (error) { 
+            console.log(error);
+        }
+    }
 
     return (
         <div>
-            <SearchBar/>
-            <MapContainer center={center}/>
+            <SearchBar onSubmit={onSubmit}/>
+            <MapContainer key={center} center={center}/>
         </div>
     )
 }

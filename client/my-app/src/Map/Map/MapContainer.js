@@ -7,7 +7,7 @@ export default (props) => {
 
     return (
         <div class='map-container'>
-            <Map center={props.center}/>
+            <Map key={props.center} center={props.center}/>
         </div>
     )
 }
