@@ -9,7 +9,7 @@
   flex-direction: column;
   justify-content: space-between;
   font-family: "Raleway", sans-serif;
-  color: black;
+  color: white;
 }
 
 h1 {
@@ -41,5 +41,5 @@ h1 {
   font-size: 15px;
   font-family: "Inter", sans-serif;
   display: block;
-  color: black;
+  color: white;
 }
