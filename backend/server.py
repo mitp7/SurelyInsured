@@ -30,25 +30,25 @@ def get_data():
     res = data_analysis_hazards.get_location_data(lat, lng)
     res.update(GLOBAL_DATA_HAZARDS)
 
-    relative_num_incidents = res['MeanNumIncidents'] / res['GlobalMeanNumIncidents']
-    relative_severity_score = res['MeanSeverityScore'] / res['GlobalMeanSeverityScore']
+    relative_num_incidents = round(res['MeanNumIncidents'] / res['GlobalMeanNumIncidents'] - 1, 2)
+    relative_severity_score = round(res['MeanSeverityScore'] / res['GlobalMeanSeverityScore'] - 1, 2)
     res.update({'RelativeNumIncidents': relative_num_incidents, 'RelativeSeverityScore': relative_severity_score})
 
-    res.update({'RelativeNumIncidentsConclusion': 'Your location has {}% {} traffic incident rates than the global mean.'.format(abs(round((1-relative_num_incidents)*100, 2)), ('higher' if relative_num_incidents > 1 else 'lower'))})
-    res.update({'RelativeSeverityScoreConclusion': 'Your location has {}% {} severe incidents than the global mean.'.format(abs(round((1-relative_severity_score)*100, 2)), ('more' if relative_severity_score > 1 else 'less'))})
+    res.update({'RelativeNumIncidentsConclusion': 'Your location has {}% {} traffic incident rates than the global mean.'.format(abs(relative_num_incidents*100), ('higher' if relative_num_incidents > 0 else 'lower'))})
+    res.update({'RelativeSeverityScoreConclusion': 'Your location has {}% {} severe incidents than the global mean.'.format(abs(relative_severity_score*100), ('more' if relative_severity_score > 0 else 'less'))})
 
     # Include general risk assessment (low/medium/high), ultimate conclusion, 2 more metrics
     res.update(data_analysis_idling.get_location_data(lat, lng))
     res.update(GLOBAL_DATA_IDLING)
-    relative_idling = res['MeanCumulativeDailyIdleTime'] / res['GlobalMeanCumulativeDailyIdleTime']
+    relative_idling = round(res['MeanCumulativeDailyIdleTime'] / res['GlobalMeanCumulativeDailyIdleTime'] - 1, 2)
     res.update({'RelativeMeanCumulativeDailyIdleTime': relative_idling})
-    res.update({'RelativeMeanCumulativeDailyIdleTimeConclusion': 'Cars in your location tend to idle for {}% {} time on average.'.format(abs(round((1-relative_idling)*100, 2)), ('more' if relative_idling > 1 else 'less'))})
+    res.update({'RelativeMeanCumulativeDailyIdleTimeConclusion': 'Cars in your location tend to idle for {}% {} time on average.'.format(abs(relative_idling*100), ('more' if relative_idling > 0 else 'less'))})
 
     res.update(data_analysis_service.get_location_data(lat, lng))
     res.update(GLOBAL_DATA_SERVICE)
-    relative_service_time = res['MeanServiceTime'] / res['GlobalMeanServiceTime']
+    relative_service_time = round(res['MeanServiceTime'] / res['GlobalMeanServiceTime'] - 1, 2)
     res.update({'RelativeMeanServiceTime': relative_service_time})
-    res.update({'RelativeMeanServiceTimeConclusion': 'Cars in your area tend to take {}% {} time to be serviced.'.format(abs(round((1-relative_service_time)*100, 2)), 'more' if relative_service_time > 1 else 'less')})
+    res.update({'RelativeMeanServiceTimeConclusion': 'Cars in your area tend to take {}% {} time to be serviced.'.format(abs(relative_service_time*100), 'more' if relative_service_time > 1 else 'less')})
 
     relative_mean = (relative_service_time + relative_idling + relative_num_incidents + relative_severity_score)/4
 
