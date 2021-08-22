@@ -11,7 +11,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def base():
-    return '<h1>The coolest insurance platform on the planet.</h1> This is where the server is hosted. Go to the client:'
+    return '<h1>The coolest insurance platform on the planet.</h1> This is where the server is hosted. Go to the <a href="http://173.35.205.120:3000/landing">client</a>.'
 
 @app.route('/getdata', methods=['GET'])
 def get_data():
