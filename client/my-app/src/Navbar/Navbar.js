@@ -10,7 +10,6 @@ export default () => {
       <Navbar className="navbar" expand="lg">
         <Container>
           <Navbar.Brand href="/"><img className="logo" src={logo}/></Navbar.Brand>
-          <button onClick={() => {api.getDataFromLatLng({lat: '11', lng: '22'})}}>Test</button>
           {/* <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">

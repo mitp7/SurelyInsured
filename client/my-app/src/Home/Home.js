@@ -21,6 +21,7 @@ var Home = () => {
             setCenter({lat, lng});
             const { data } = await api.getDataFromLatLng({lat, lng});
             setDataToDisplay(data);
+            console.log('data', data);
         } catch (error) { 
             console.log(error);
         }
