@@ -13,5 +13,10 @@ def get_location_data(lat, lng):
     return {'MeanSeverityScore': nearby_table.SeverityScore.mean(), 
             'MeanNumIncidents': nearby_table.IncidentsTotal.mean()}
 
+# Same as get_location_data, but for all existing data
+def get_global_data():
+    return {'GlobalMeanSeverityScore': table.SeverityScore.mean(),
+            'GlobalMeanNumIncidents': table.IncidentsTotal.mean()}
+
 metrics = get_location_data(43, -79)
 print(metrics)
