@@ -8,7 +8,7 @@ app = Flask(__name__)
 def base():
     return '<h1>The coolest insurance platform on the planet.</h1> This is where the server is hosted. Go to the client:'
 
-@app.route('/getdata', methods=['POST'])
+@app.route('/getdata', methods=['GET'])
 def get_data():
     lat, lng = int(request.args.get('lat')), int(request.args.get('lng'))
     print(lat, lng)
