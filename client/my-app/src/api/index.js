@@ -1,4 +1,5 @@
 import Geocode from "react-geocode";
+import axios from 'axios';
 import dotenv from 'dotenv';
 dotenv.config();
 
@@ -16,6 +17,6 @@ export const getLatLngFromAddress = (address) => {
     );
 }
 
-export const getDataFromLatLng = (lat, lng) => { 
-    
+export const getDataFromLatLng = ({lat, lng}) => {
+    return axios.get(`http://173.35.205.120:5001/getdata?lat=${lat}&lng=${lng}`);
 }
