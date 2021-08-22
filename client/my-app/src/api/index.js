@@ -17,10 +17,6 @@ export const getLatLngFromAddress = (address) => {
     );
 }
 
-export const getDataFromLatLng = async ({lat, lng}) => { 
-    console.log(lat, typeof lat);
-    console.log(lng, typeof lng);
-    let result = await axios.get(`https://www.alphavantage.co/query?function=TIME_SERIES_INTRADAY&symbol=IBM&interval=5min&apikey=demo`);
-    // let result = await axios.get(`http://173.35.205.120:5001/getdata?lat=${lat}&lng=${lng}`);
-    console.log(result)
+export const getDataFromLatLng = ({lat, lng}) => {
+    return axios.get(`http://173.35.205.120:5001/getdata?lat=${lat}&lng=${lng}`);
 }
