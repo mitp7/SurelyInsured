@@ -9,7 +9,9 @@ export default function DataDisplay(props) {
                 <div className="dataInformation">
                     <span className="dataStatistics">{props?.data?.RelativeNumIncidents ? props.data.RelativeNumIncidents : ''}</span>
                     {
-                      props?.data?.RelativeNumIncidents ? <img src={`/images/${props.data.RelativeNumIncidents > 0 ? 'green' : 'red'}_icon.png`} alt=""></img> : null
+                      props?.data?.RelativeNumIncidents ? 
+                        <img src={`/images/${props.data.RelativeNumIncidents > 0 ? 'green' : 'red'}_icon.png`} alt=""></img> 
+                        : null
                     }
                     <span className="dataCatergory">{props?.data?.RelativeNumIncidentsConclusion ? props.data.RelativeNumIncidentsConclusion : '' }</span>
                 </div>
