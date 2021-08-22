@@ -1,4 +1,3 @@
-backend/venv
 backend/__pycache__
-HazardousDrivingAreas.csv
-IdlingAreas.csv
+backend/venv
+*.csv
