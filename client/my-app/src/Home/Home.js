@@ -9,7 +9,7 @@ import * as api from '../api';
 var Home = () => { 
 
     const [center, setCenter] = useState({lat: 43.653226, lng: -79.3831843}); // default latitude and longitude values
-    const [dataToDisplay, setDataToDisplay] = useState({});
+    const [dataToDisplay, setDataToDisplay] = useState(null);
 
     // When user submits, update the map center and data displays
     const onSubmit = async (location) => {
