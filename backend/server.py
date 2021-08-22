@@ -30,8 +30,8 @@ def get_data():
     res = data_analysis_hazards.get_location_data(lat, lng)
     res.update(GLOBAL_DATA_HAZARDS)
 
-    relative_num_incidents = round(res['MeanNumIncidents'] / res['GlobalMeanNumIncidents'] - 1, 2)
-    relative_severity_score = round(res['MeanSeverityScore'] / res['GlobalMeanSeverityScore'] - 1, 2)
+    relative_num_incidents = round(res['MeanNumIncidents'] / res['GlobalMeanNumIncidents'] - 1, 4)
+    relative_severity_score = round(res['MeanSeverityScore'] / res['GlobalMeanSeverityScore'] - 1, 4)
     res.update({'RelativeNumIncidents': relative_num_incidents, 'RelativeSeverityScore': relative_severity_score})
 
     res.update({'RelativeNumIncidentsConclusion': 'Your location has {}% {} traffic incident rates than the global mean.'.format(abs(relative_num_incidents*100), ('higher' if relative_num_incidents > 0 else 'lower'))})
@@ -40,13 +40,13 @@ def get_data():
     # Include general risk assessment (low/medium/high), ultimate conclusion, 2 more metrics
     res.update(data_analysis_idling.get_location_data(lat, lng))
     res.update(GLOBAL_DATA_IDLING)
-    relative_idling = round(res['MeanCumulativeDailyIdleTime'] / res['GlobalMeanCumulativeDailyIdleTime'] - 1, 2)
+    relative_idling = round(res['MeanCumulativeDailyIdleTime'] / res['GlobalMeanCumulativeDailyIdleTime'] - 1, 4)
     res.update({'RelativeMeanCumulativeDailyIdleTime': relative_idling})
     res.update({'RelativeMeanCumulativeDailyIdleTimeConclusion': 'Cars in your location tend to idle for {}% {} time on average.'.format(abs(relative_idling*100), ('more' if relative_idling > 0 else 'less'))})
 
     res.update(data_analysis_service.get_location_data(lat, lng))
     res.update(GLOBAL_DATA_SERVICE)
-    relative_service_time = round(res['MeanServiceTime'] / res['GlobalMeanServiceTime'] - 1, 2)
+    relative_service_time = round(res['MeanServiceTime'] / res['GlobalMeanServiceTime'] - 1, 4)
     res.update({'RelativeMeanServiceTime': relative_service_time})
     res.update({'RelativeMeanServiceTimeConclusion': 'Cars in your area tend to take {}% {} time to be serviced.'.format(abs(relative_service_time*100), 'more' if relative_service_time > 1 else 'less')})
 
