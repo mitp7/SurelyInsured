@@ -3,7 +3,7 @@ import "./DataDisplay.css";
 export default function DataDisplay() {
   return (
     <div className="dataDisplay">
-      <h1>Your location risks having insurance rates are high/low because:</h1>
+      <h1>Your location risks result in insurance rates being high/low because:</h1>
       <div className="featuredData">
         <div className="dataInformation">
           <span className="dataStatistics">32%</span>
