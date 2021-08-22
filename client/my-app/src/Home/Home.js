@@ -5,7 +5,7 @@ import MapAndSearchBar from '../Map/MapAndSearchBar.js';
 import DataDisplay from '../DataDisplay/DataDisplay.js';
 import './index.css';
 
-export default () => { 
+var Home = () => { 
     return (
     <Container className="home-container">
         <Row>
@@ -19,3 +19,5 @@ export default () => {
     </Container> 
     )
 }
+
+export default Home;

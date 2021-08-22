@@ -5,8 +5,7 @@ import SearchBar from './SearchBar/SearchBar';
 
 import * as api from '../api';
 
-
-export default () => { 
+var MapAndSearchBar = () => { 
 
     const [center, setCenter] = useState({lat: 43.653226, lng: -79.3831843}); // default latitude and longitude values
 
@@ -30,3 +29,5 @@ export default () => {
         </div>
     )
 }
+
+export default MapAndSearchBar;
