@@ -1,5 +1,6 @@
-from flask import Flask
+from flask import Flask, request, jsonify
 from data_analysis import get_location_data
+
 
 app = Flask(__name__)
 
@@ -9,7 +10,9 @@ def base():
 
 @app.route('/getdata', methods=['POST'])
 def get_data():
-    return get_location_data(45, -79)
+    lat, lng = int(request.args.get('lat')), int(request.args.get('lng'))
+    print(lat, lng)
+    return jsonify(get_location_data(lat, lng))
 
 if __name__ == '__main__':
     app.run(debug=True, port=5001, host='0.0.0.0')

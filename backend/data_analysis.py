@@ -10,7 +10,8 @@ def nearby_entries(lat, lng, num_entries=100):
 # Returns the mean severity score and number of incidents for the nearest locations to (lat, lng)
 def get_location_data(lat, lng):
     nearby_table = nearby_entries(lat, lng)
-    return nearby_table.SeverityScore.mean(), nearby_table.IncidentsTotal.mean()
+    return {'MeanSeverityScore': nearby_table.SeverityScore.mean(), 
+            'MeanNumIncidents': nearby_table.IncidentsTotal.mean()}
 
 metrics = get_location_data(43, -79)
 print(metrics)
