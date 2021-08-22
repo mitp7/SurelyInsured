@@ -9,7 +9,7 @@ export default function DataDisplay() {
                 <div className="dataInformation">
                     <span className="dataStatistics">32%</span>
                     <img src="/images/green_icon.png" alt=""></img>
-                    <span className="dataCatergory">Lower rates of accidents</span>
+                    <span className="dataCatergory">Your location risks result in insurance rates being high/low because</span>
                 </div>
             </div>
 
