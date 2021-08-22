@@ -1,6 +1,6 @@
 .Search {
-  margin-top: 50px;
-  margin-bottom: -55px;
+  margin-top: 40px;
+  margin-bottom: -45px;
   z-index: 999;
   position: relative;
   max-width: 85%;
@@ -19,10 +19,6 @@
   color: white;
   word-spacing: -4px;
   font-size: 64px;
-}
-
-.Search__bar{
-   height: 7vh;
 }
 
 .Search__input {
