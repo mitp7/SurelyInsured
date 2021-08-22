@@ -1,8 +1,11 @@
 from flask import Flask, request, jsonify
 from werkzeug.wrappers import response
-from data_analysis import get_global_data, get_location_data
+import data_analysis_hazards, data_analysis_idling
 
-GLOBAL_DATA = get_global_data()
+GLOBAL_DATA_HAZARDS = data_analysis_hazards.get_global_data()
+GLOBAL_DATA_IDLING = data_analysis_idling.get_global_data()
+
+DECIMAL_PLACES = 2
 
 app = Flask(__name__)
 
@@ -12,10 +15,10 @@ def base():
 
 @app.route('/getdata', methods=['GET'])
 def get_data():
-    lat, lng = int(request.args.get('lat')), int(request.args.get('lng'))
+    lat, lng = float(request.args.get('lat')), float(request.args.get('lng'))
     print(lat, lng)
-    res = get_location_data(lat, lng)
-    res.update(GLOBAL_DATA)
+    res = data_analysis_hazards.get_location_data(lat, lng)
+    res.update(GLOBAL_DATA_HAZARDS)
 
     relative_num_incidents = res['MeanNumIncidents'] / res['GlobalMeanNumIncidents']
     relative_severity_score = res['MeanSeverityScore'] / res['GlobalMeanSeverityScore']
@@ -24,6 +27,11 @@ def get_data():
     res.update({'RelativeNumIncidentsConclusion': 'Your location has {}% {} traffic incident rates than the global mean.'.format(abs(round((1-relative_num_incidents)*100, 2)), ('higher' if relative_num_incidents > 1 else 'lower'))})
     res.update({'RelativeSeverityScoreConclusion': 'Your location has {}% {} severe incidents than the global mean.'.format(abs(round((1-relative_severity_score)*100, 2)), ('more' if relative_severity_score > 1 else 'less'))})
 
+    # Include general risk assessment (low/medium/high), ultimate conclusion, 2 more metrics
+    res.update(data_analysis_idling.get_location_data(lat, lng))
+    res.update(GLOBAL_DATA_IDLING)
+    relative_idling = res['MeanCumulativeDailyIdleTime'] / res['GlobalMeanCumulativeDailyIdleTime']
+    res.update({'RelativeMeanCumulativeDailyIdleTime': 'Cars in your location tend to idle for {}% {} time on average.'.format(abs(round((1-relative_idling)*100, 2)), ('more' if relative_idling > 1 else 'less'))})
 
     res = jsonify(res)
     res.headers.add('Access-Control-Allow-Origin', '*')
