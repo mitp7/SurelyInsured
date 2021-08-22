@@ -6,10 +6,7 @@ function SearchBar(props) {
    return (
       <section className="Search">
          <div className="Search__container">
-            <div className="Search__title__container">
-               <h1 className="Search__title">Surely Insured</h1>
-            </div>
-            <form onSubmit={(event) => {event.preventDefault(); props.onSubmit(value)}}>
+            <form onSubmit={(event) => { event.preventDefault(); props.onSubmit(value) }}>
                <div className="Search__bar">
                   <input
                      size="large"

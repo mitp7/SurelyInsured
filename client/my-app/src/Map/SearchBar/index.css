@@ -1,6 +1,10 @@
 .Search {
-  margin-top: 1%;
-  margin-bottom: 5%;
+  margin-top: 50px;
+  margin-bottom: -55px;
+  z-index: 999;
+  position: relative;
+  max-width: 85%;
+  margin-left: 10%;
 }
 
 .Search__container{
@@ -25,7 +29,7 @@
   border: none;
   box-shadow: 0px 8px 30px rgba(57, 57, 57, 0.25);
   border-radius: 4px;
-  width: 80%;
+  width: 70%;
   font-family: "Trebuchet MS";
   font-size: 20px;
 }
@@ -38,4 +42,10 @@
   background: #00BFFF;
   font-size: 20px;
   margin-left: 0.5rem;
+}
+
+@media screen and (min-width: 767px) and (max-width: 993.5px) {
+   .Search{
+      max-width: 75%;
+   }
 }
