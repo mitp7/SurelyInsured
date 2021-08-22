@@ -17,6 +17,7 @@
 }
 .heading h1 {
     width: 100%;
+    margin-top: 1rem;
     font-size: 30px;
     font-family: "Raleway", sans-serif;
     color: white;
