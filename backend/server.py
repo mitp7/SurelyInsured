@@ -1,9 +1,10 @@
 from flask import Flask, request, jsonify
 from werkzeug.wrappers import response
-import data_analysis_hazards, data_analysis_idling
+import data_analysis_hazards, data_analysis_idling, data_analysis_service
 
 GLOBAL_DATA_HAZARDS = data_analysis_hazards.get_global_data()
 GLOBAL_DATA_IDLING = data_analysis_idling.get_global_data()
+GLOBAL_DATA_SERVICE = data_analysis_service.get_global_data()
 
 DECIMAL_PLACES = 2
 
@@ -31,7 +32,14 @@ def get_data():
     res.update(data_analysis_idling.get_location_data(lat, lng))
     res.update(GLOBAL_DATA_IDLING)
     relative_idling = res['MeanCumulativeDailyIdleTime'] / res['GlobalMeanCumulativeDailyIdleTime']
-    res.update({'RelativeMeanCumulativeDailyIdleTime': 'Cars in your location tend to idle for {}% {} time on average.'.format(abs(round((1-relative_idling)*100, 2)), ('more' if relative_idling > 1 else 'less'))})
+    res.update({'RelativeMeanCumulativeDailyIdleTime': relative_idling})
+    res.update({'RelativeMeanCumulativeDailyIdleTimeConclusion': 'Cars in your location tend to idle for {}% {} time on average.'.format(abs(round((1-relative_idling)*100, 2)), ('more' if relative_idling > 1 else 'less'))})
+
+    res.update(data_analysis_service.get_location_data(lat, lng))
+    res.update(GLOBAL_DATA_SERVICE)
+    relative_service_time = res['MeanServiceTime'] / res['GlobalMeanServiceTime']
+    res.update({'RelativeMeanServiceTime': relative_service_time})
+    res.update({'RelativeMeanServiceTimeConclusion': 'Cars in your area tend to take {}% {} time to be serviced.'.format(abs(round((1-relative_service_time)*100, 2)), 'more' if relative_service_time > 1 else 'less')})
 
     res = jsonify(res)
     res.headers.add('Access-Control-Allow-Origin', '*')
