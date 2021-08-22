@@ -10,6 +10,15 @@ DECIMAL_PLACES = 2
 
 app = Flask(__name__)
 
+def risk_assessment(relative_mean):
+    # Should insurance prices increase, decrease, or stay the same as a result of the new data?
+    if relative_mean <= 0.8:
+        return 'decrease'
+    elif relative_mean <= 1.2:
+        return 'remain the same'
+    else:
+        return 'increase'
+
 @app.route('/')
 def base():
     return '<h1>The coolest insurance platform on the planet.</h1> This is where the server is hosted. Go to the <a href="http://173.35.205.120:3000/landing">client</a>.'
@@ -40,6 +49,10 @@ def get_data():
     relative_service_time = res['MeanServiceTime'] / res['GlobalMeanServiceTime']
     res.update({'RelativeMeanServiceTime': relative_service_time})
     res.update({'RelativeMeanServiceTimeConclusion': 'Cars in your area tend to take {}% {} time to be serviced.'.format(abs(round((1-relative_service_time)*100, 2)), 'more' if relative_service_time > 1 else 'less')})
+
+    relative_mean = (relative_service_time + relative_idling + relative_num_incidents + relative_severity_score)/4
+
+    res.update({'UltimateConclusion': 'Insurance rates are likely to {}.'.format(risk_assessment(relative_mean))})
 
     res = jsonify(res)
     res.headers.add('Access-Control-Allow-Origin', '*')
