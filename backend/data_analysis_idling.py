@@ -1,7 +1,6 @@
 import pandas as pd
-import math
 
-table = pd.read_csv('HazardousDrivingAreas.csv')
+table = pd.read_csv('IdlingAreas.csv')
 
 # Return the (num_entries) closest entries to the location (lat, lng)
 def nearby_entries(lat, lng, num_entries=100):
@@ -10,13 +9,15 @@ def nearby_entries(lat, lng, num_entries=100):
 # Returns the mean severity score and number of incidents for the nearest locations to (lat, lng)
 def get_location_data(lat, lng):
     nearby_table = nearby_entries(lat, lng)
-    return {'MeanSeverityScore': nearby_table.SeverityScore.mean(), 
-            'MeanNumIncidents': nearby_table.IncidentsTotal.mean()}
+    return {'MeanCumulativeDailyIdleTime': nearby_table.CumulativeDailyIdleTime.mean(), 
+            }
 
 # Same as get_location_data, but for all existing data
 def get_global_data():
-    return {'GlobalMeanSeverityScore': table.SeverityScore.mean(),
-            'GlobalMeanNumIncidents': table.IncidentsTotal.mean()}
+    return {'GlobalMeanCumulativeDailyIdleTime': table.CumulativeDailyIdleTime.mean()
+            }
 
 metrics = get_location_data(43, -79)
 print(metrics)
+
+print(get_global_data())

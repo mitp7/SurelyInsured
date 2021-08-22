@@ -35,8 +35,8 @@
 
 .featuredData img{
     position: absolute;
-    margin: 0rem 0rem 1rem 12rem;
-    width:55px;
+    margin: 0.3rem 0rem 1rem 1rem;
+    width: 30px;
     border-radius: 9px;
 }
 
@@ -54,5 +54,5 @@
     font-family: "Inter", sans-serif;
     display: block;
     color: hsla(0, 0%, 100%, 0.7);
-    padding-top: 0.25rem;
+    padding-top: 0.4rem;
 }
