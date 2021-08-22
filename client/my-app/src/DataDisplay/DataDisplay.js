@@ -7,8 +7,8 @@ export default function DataDisplay(props) {
         props.data ?
         <div className="heading">
           <h1>Based on location, your client's insurance premium should be relatively</h1>
-          <h1 style={{display: 'inline', color: (props?.data?.UltimateConclusion && props.data.UltimateConclusion === 'Insurance Rates are likely to increase.' ? '#ff8383' : '#00ff80')}}>
-            {props?.data?.UltimateConclusion && props.data.UltimateConclusion === 'Insurance Rates are likely to decrease.' ? 'low' : 'high'}
+          <h1 style={{display: 'inline', color: (props?.data?.UltimateConclusion && props.data.UltimateConclusion === 'Insurance rates are likely to decrease.' ? '#ff8383' : '#00ff80')}}>
+            {props?.data?.UltimateConclusion && props.data.UltimateConclusion === 'Insurance rates are likely to decrease.' ? 'low' : 'high'}
           </h1>
           <div className="dataDisplay">
 
