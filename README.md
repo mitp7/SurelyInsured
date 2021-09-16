@@ -1,5 +1,5 @@
 <a href="https://devpost.com/software/surely-insured">
-    <img src="client/my-app/src/images/logo.PNG" alt="SurelyInsured-logo" title="SurelyInsured" align="right" height="75" />
+    <img src="client/my-app/src/images/logo.PNG" alt="SurelyInsured-logo" title="SurelyInsured" align="right" height="70" />
 </a>
 
 # Safely Insured
